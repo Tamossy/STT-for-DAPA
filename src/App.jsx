@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
-import Archive from './components/Archive/Archive'; 
+import Archive from './components/archive/archive'; 
 import Streaming from './components/Workspace/Streaming'; 
 import SystemBar from './components/Layout/SystemBar';
 import NavDock from './components/Layout/NavDock';
