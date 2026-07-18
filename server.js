@@ -82,7 +82,13 @@ io.on('connection', (socket) => {
       if (totalLength === 0) return;
 
       const mergedPcm = Buffer.concat(chunks);
-      const tempWavPath = `uploads/stream_${socket.id}_${Date.now()}.wav`;
+      
+      // 🔥 [추가된 부분] uploads 폴더가 없으면 즉시 생성하고 절대 경로로 안전하게 연결!
+      const uploadDir = path.join(__dirname, 'uploads');
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir);
+      }
+      const tempWavPath = path.join(uploadDir, `stream_${socket.id}_${Date.now()}.wav`);
 
       try {
         const wavBuffer = encodeWAV(mergedPcm, 16000);
