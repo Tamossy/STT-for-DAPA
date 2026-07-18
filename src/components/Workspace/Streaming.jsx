@@ -43,7 +43,7 @@ export default function Streaming({ currentTab, setMeetings, setCurrentTab, setS
       canStreamRef.current = true;
 
       // 🔥 [해결 1 연속] 하드웨어가 잡힌 싱크 위에서 비로소 깨끗하고 안전하게 소켓망 수립!
-      const socket = io('http://localhost:5002', {
+      const socket = io('https://stt-for-dapa.onrender.com', {
         transports: ['websocket'],
         forceNew: true
       });
@@ -117,7 +117,7 @@ export default function Streaming({ currentTab, setMeetings, setCurrentTab, setS
     const fullTextDocument = realtimeTranscripts.map(item => `${item.speaker}: ${item.text}`).join('\n');
 
     try {
-      const response = await fetch('http://localhost:5001/api/summarize', {
+      const response = await fetch('https://stt-for-dapa.onrender.com/api/summarize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: fullTextDocument })

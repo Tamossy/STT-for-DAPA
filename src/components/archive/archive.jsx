@@ -47,7 +47,7 @@ export default function Archive({
       // 💡 [배포 대응 스마트 배선] 로컬이면 로컬로, 배포되었으면 클라우드로 자동 연결
       const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://127.0.0.1:5001'
-        : 'https://나중에-만들-백엔드-주소.com'; // 👈 (이 부분은 백엔드 배포 후에 진짜 주소로 다시 바꿀 예정입니다!)
+        : 'https://stt-for-dapa.onrender.com'; // 👈 (이 부분은 백엔드 배포 후에 진짜 주소로 다시 바꿀 예정입니다!)
 
       const response = await fetch(`${BACKEND_URL}/api/upload-transcribe`, {
         method: 'POST',
